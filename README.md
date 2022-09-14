@@ -10,5 +10,5 @@ Show that nmap discovers our honey pot
 Alert us when our honey pot is accessed: occurrence of a TCP (SYN/ACK) handshake
 With just this basic, simple Python script, we can be alerted to malicious activity on our network.
 
-![Alt text](images/network-honeypot.png?raw=true "Title")
+![Alt text](/images/network-honeypot.png?raw=true "Title")
 
