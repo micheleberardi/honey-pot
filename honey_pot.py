@@ -10,6 +10,7 @@ VERSION = '0.1a'
 welcome = b"Ubuntu 18.04.1 LTS\nserver login: "
 
 datenow = datetime.datetime.now()
+
 def slack_msg_error(msg):
     result_dict = ("*HONEY POT 🍯 PORT 23* \n" + "*MSG* " + str(msg) + "\n DATE: " + str(datenow))
     slack_report = {"attachments": [{"fallback": "*HONEY POT 🍯 PORT 22*", "color": "#ECB22E", "text": result_dict}]}
@@ -44,15 +45,10 @@ def honeypot(address, port=23):
         send_email(addr[0])
         conn.sendall(welcome)
         while True:
-            data = conn.recv(1024)
-            #slack_msg_error(data)
-            print(data)
-            #slack_msg_error(msg=data)
+            data = conn.recv(1024)   
             if data == b'\r\n':
                 slack_msg_error(data)
-                #print(data)
-                #ski.close()
-                #sys.exit()
+                
             elif data == b'':
                 print(data)
                 ski.close()
@@ -60,10 +56,8 @@ def honeypot(address, port=23):
             else:
                 print(data)
                 slack_msg_error(data)
-                #ski.close()
-                #sys.exit()
+                
     except Exception as e:
-        print(e)
         ski.close()
         sys.exit()
         print(e)
